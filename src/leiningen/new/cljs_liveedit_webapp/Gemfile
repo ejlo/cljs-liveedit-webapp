@@ -1,0 +1,11 @@
+source "http://rubygems.org"
+
+gem 'rake'
+
+gem 'guard'
+gem 'guard-livereload'
+gem 'guard-shell'
+gem 'foreman'
+
+gem 'compass'
+gem 'erubis'

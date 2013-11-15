@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <link rel="stylesheet" type="text/css" href="style/app.css">
+  </head>
+
+  <body>
+<% if( @build_type == "dev" ) %>
+    <script src="http://localhost:35730/livereload.js"></script>
+    <script src="js/out/goog/base.js"></script>
+<% end %>
+    <script src="js/{{sanitized}}.js"></script>
+<% if( @build_type == "dev" ) %>
+    <script>goog.require("{{sanitized}}.main");</script>
+<% end %>
+    <script>{{sanitized}}.main.init("<%= @build_type %>");</script>
+  </body>
+</html>

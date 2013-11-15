@@ -1,0 +1,5 @@
+css:         compass watch
+js-dev:      scripts/start_build.sh dev test
+#js-release:  scripts/start_build.sh release test
+webserver:   scripts/webserver.js
+livereload:  bundle exec guard --notify false -i -P LiveReload
