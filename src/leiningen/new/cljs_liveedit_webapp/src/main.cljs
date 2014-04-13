@@ -1,12 +1,20 @@
 (ns {{name}}.main
-  (:require-macros [dommy.macros :as dm :refer [node sel sel1]])
-  (:require [dommy.core :as d]))
+    (:require [{{name}}.repl    :as repl]
+              [{{name}}.tools   :as tools]
+              [reagent.core     :as reagent]))
+
+(def hello-world-text (reagent/atom "Hello world!"))
+
+(def body (.-body js/document))
+
+(defn hello-world-component []
+  [:div#wrapper
+   [:div#hello @hello-world-text]])
 
 (defn hello-world []
-  (d/append! (sel1 :body)
-             [:#wrapper
-              [:#hello "Hello world!"]]))
+  (reagent/render-component [hello-world-component] body))
 
 (defn ^:export init [dev]
-  (.log js/console "Dev:" dev)
+  (tools/log "(init)" dev)
+  (repl/connect)
   (hello-world))

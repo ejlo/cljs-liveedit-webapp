@@ -27,6 +27,7 @@
              [(templ "style/_hello.scss") (render (templ "style/_hello.scss") data)]
              [(templ "style/_reset.scss") (render (templ "style/_reset.scss") data)]
              [(templ "index.html.erb") (render (templ "index.html.erb") data)]
+             [(templ "js/function_prototype_polyfill.js") (render (templ "js/function_prototype_polyfill.js") data)]
              ["scripts/generate_index_html.rb" (render "scripts/generate_index_html.rb" data) :executable true]
              ["scripts/install_deps.sh" (render "scripts/install_deps.sh" data) :executable true]
              ["scripts/run_tests.rb" (render "scripts/run_tests.rb" data) :executable true]

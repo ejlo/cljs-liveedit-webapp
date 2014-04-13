@@ -5,7 +5,7 @@
                  [org.clojure/clojurescript "0.0-2202"]
                  [prismatic/dommy "0.1.2"]
                  #_[om "0.5.3"]
-                 #_[reagent "0.4.2"]
+                 [reagent "0.4.2"]
                  [tailrecursion/javelin "3.1.1"]]
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-exec "0.3.3"]
@@ -17,16 +17,19 @@
           :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                          :output-dir    "resources/public/js/out"
                          :optimizations nil
-                         :pretty-print  true}}
+                         :pretty-print  true
+                         :preamble ["reagent/react.js"]}}
     :release {:source-paths ["src/{{sanitized}}" "src/release"]
               :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                              :optimizations :advanced
+                             :preamble ["reagent/react.min.js"]
                              :externs       ["externs/jquery-1.8.js"
                                              "externs/{{name}}.js"]}}
     :test {:source-paths   ["src/{{sanitized}}" "test"]
            :notify-command ["scripts/run_tests.rb" :cljs.test/runner]
            :compiler       {:output-to     "resources/public/test/js/test.js"
                             :optimizations :whitespace
-                            :pretty-print  true}}}
+                            :pretty-print  true
+                            :preamble ["templates/js/function_prototype_polyfill.js" "reagent/react.js"]}}}
    :test-commands {"unit-tests" ["scripts/run_tests.rb" :runner]}}
 )
