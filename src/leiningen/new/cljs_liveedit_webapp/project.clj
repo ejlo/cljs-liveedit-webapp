@@ -16,9 +16,10 @@
    {:dev {:source-paths ["src/{{sanitized}}" "src/dev"]
           :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                          :output-dir    "resources/public/js/out"
-                         :optimizations nil
+                         :optimizations :none
                          :pretty-print  true
-                         :preamble ["reagent/react.js"]}}
+                         :preamble ["reagent/react.js"]
+                         :source-map true}}
     :release {:source-paths ["src/{{sanitized}}" "src/release"]
               :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                              :optimizations :advanced
