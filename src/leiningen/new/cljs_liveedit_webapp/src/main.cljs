@@ -1,7 +1,8 @@
 (ns {{name}}.main
-    (:require [{{name}}.repl    :as repl]
-              [{{name}}.tools   :as tools]
-              [reagent.core     :as reagent]))
+    (:require [reagent.core         :as reagent]
+              [{{name}}.repl        :as repl]
+              [{{name}}.tools       :as tools]
+              [{{name}}.debug-level :as debug-level]))
 
 (def hello-world-text (reagent/atom "Hello world!"))
 
@@ -15,6 +16,7 @@
   (reagent/render-component [hello-world-component] body))
 
 (defn ^:export init [dev]
-  (tools/log "(init)" dev)
+  (debug-level/set-level!)
+  (tools/log "(init) dev:" dev)
   (repl/connect)
   (hello-world))
