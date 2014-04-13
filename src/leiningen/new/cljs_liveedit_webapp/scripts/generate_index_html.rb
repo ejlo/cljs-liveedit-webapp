@@ -14,6 +14,8 @@ usage unless @build_type == "dev" or @build_type == "release"
 infile = 'resources/templates/index.html.erb'
 outfile = 'resources/public/index.html'
 
+`mkdir -p resources/public`
+
 input = File.read(infile)
 eruby = Erubis::Eruby.new(input)
 
