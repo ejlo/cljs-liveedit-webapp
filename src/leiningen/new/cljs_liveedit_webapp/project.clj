@@ -1,14 +1,16 @@
 (defproject {{name}} "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
   :url "http://FIXME"
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2030"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2202"]
                  [prismatic/dommy "0.1.2"]
-                 [tailrecursion/javelin "2.3.0"]]
-  :plugins [[lein-cljsbuild "1.0.0-alpha2"]
-            [lein-exec "0.3.1"]
-            [lein-externs "0.1.1"]
-            [com.cemerick/clojurescript.test "0.2.2-SNAPSHOT"]]
+                 #_[om "0.5.3"]
+                 #_[reagent "0.4.2"]
+                 [tailrecursion/javelin "3.1.1"]]
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [lein-exec "0.3.3"]
+            [lein-externs "0.1.3"]
+            [com.cemerick/clojurescript.test "0.2.3-SNAPSHOT"]]
   :cljsbuild
   {:builds
    {:dev {:source-paths ["src"]
