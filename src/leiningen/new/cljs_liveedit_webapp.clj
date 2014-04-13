@@ -33,5 +33,13 @@
              ["scripts/start_build.sh" (render "scripts/start_build.sh" data) :executable true]
              ["scripts/webserver.js" (render "scripts/webserver.js" data) :executable true]
              ["scripts/generate_externs.sh" (render "scripts/generate_externs.sh" data) :executable true]
+             ["scripts/clojurescript.el" (render "scripts/clojurescript.el" data)]
              ["src/{{sanitized}}/main.cljs" (render "src/main.cljs" data)]
-             ["test/{{sanitized}}/test/main.cljs" (render "test/main.cljs" data)])))
+             ["src/{{sanitized}}/tools.cljs" (render "src/tools.cljs" data)]
+             ["src/dev/{{sanitized}}/repl.cljs" (render "src/dev/repl.cljs" data)]
+             ["src/dev/{{sanitized}}/debug_level.cljs" (render "src/dev/debug_level.cljs" data)]
+             ["src/release/{{sanitized}}/repl.cljs" (render "src/release/repl.cljs" data)]
+             ["src/release/{{sanitized}}/debug_level.cljs" (render "src/release/debug_level.cljs" data)]
+             ["test/{{sanitized}}/test/main.cljs" (render "test/main.cljs" data)]
+             ["test/{{sanitized}}/test/repl.cljs" (render "test/repl.cljs" data)]
+             ["test/{{sanitized}}/test/debug_level.cljs" (render "test/debug_level.cljs" data)])))

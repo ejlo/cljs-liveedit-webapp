@@ -20,7 +20,7 @@ firefox http://localhost:63770
 
 * automatically run tests
 * live reload of css and js files
-
+* clojurescript brower-repl
 
 
 ## License

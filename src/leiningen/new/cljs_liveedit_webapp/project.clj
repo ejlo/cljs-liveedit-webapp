@@ -13,17 +13,17 @@
             [com.cemerick/clojurescript.test "0.2.3-SNAPSHOT"]]
   :cljsbuild
   {:builds
-   {:dev {:source-paths ["src"]
+   {:dev {:source-paths ["src/{{sanitized}}" "src/dev"]
           :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                          :output-dir    "resources/public/js/out"
                          :optimizations nil
                          :pretty-print  true}}
-    :release {:source-paths ["src"]
+    :release {:source-paths ["src/{{sanitized}}" "src/release"]
               :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                              :optimizations :advanced
                              :externs       ["externs/jquery-1.8.js"
                                              "externs/{{name}}.js"]}}
-    :test {:source-paths   ["src" "test"]
+    :test {:source-paths   ["src/{{sanitized}}" "test"]
            :notify-command ["scripts/run_tests.rb" :cljs.test/runner]
            :compiler       {:output-to     "resources/public/test/js/test.js"
                             :optimizations :whitespace
