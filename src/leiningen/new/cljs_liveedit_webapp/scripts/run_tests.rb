@@ -32,8 +32,8 @@ def fail_msg count
 end
 
 def main
-  puts $compile_res
   if( /^Successfully/ =~ $compile_res )
+    puts "Running tests..."
     res=run_runner
     save($test_res_file, res)
 
@@ -41,8 +41,10 @@ def main
       fails = f.to_i + e.to_i
       if( fails == 0 )
         rm($test_msg_file)
+        puts "Tests passed!"
       else
         save($test_msg_file, fail_msg(fails))
+        puts "Tests failed: #{res}"
       end
     else
       save($test_msg_file, "Script failed!")
