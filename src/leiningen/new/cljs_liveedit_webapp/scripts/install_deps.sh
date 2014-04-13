@@ -24,13 +24,13 @@ gem install bundler
 bundle install
 
 npm install connect # http://www.senchalabs.org/connect/
-npm install bower   # https://github.com/bower/bower
-npm install mu2     # https://github.com/raycmorgan/Mu
+#npm install bower   # https://github.com/bower/bower
+#npm install mu2     # https://github.com/raycmorgan/Mu
 
 cd resources/
 mkdir -p public/js/lib
 
-bower install jquery
-cp components/jquery/jquery.min.js public/js/lib
+#bower install jquery
+#cp components/jquery/jquery.min.js public/js/lib
 
 echo -e "\n\nAll deps installed. We are ready to start!\n\n"
