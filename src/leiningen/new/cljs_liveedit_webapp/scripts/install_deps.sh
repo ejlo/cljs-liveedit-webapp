@@ -33,4 +33,7 @@ mkdir -p public/js/lib
 #bower install jquery
 #cp components/jquery/jquery.min.js public/js/lib
 
+bower install react
+cp components/react/react.js public/js/lib
+
 echo -e "\n\nAll deps installed. We are ready to start!\n\n"
