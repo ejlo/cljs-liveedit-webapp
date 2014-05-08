@@ -31,7 +31,6 @@
              (r "resources/templates/js/function_prototype_polyfill.js")
              (r "scripts/install_deps.sh" :executable true)
              (r "scripts/run_tests.rb" :executable true)
-             (r "scripts/start_build.sh" :executable true)
              (r "scripts/generate_externs.sh" :executable true)
              (r "scripts/clojurescript.el")
              (r2 "src/{{sanitized}}/main.cljs" "src/main.cljs")
