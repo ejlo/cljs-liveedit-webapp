@@ -1,3 +1,3 @@
 #!/bin/bash
 
-lein externs test > externs/{{sanitized}}.js
+lein externs test > externs/app.js

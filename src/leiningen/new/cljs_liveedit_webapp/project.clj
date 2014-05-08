@@ -24,8 +24,8 @@
               :compiler     {:output-to     "resources/public/js/{{sanitized}}.js"
                              :optimizations :advanced
                              :preamble ["reagent/react.min.js"]
-                             :externs       ["externs/jquery-1.8.js"
-                                             "externs/{{name}}.js"]}}
+                             :externs       ["externs/jquery.js"
+                                             "externs/app.js"]}}
     :test {:source-paths   ["src/{{sanitized}}" "test"]
            :notify-command ["scripts/run_tests.rb" :cljs.test/runner]
            :compiler       {:output-to     "resources/public/test/js/test.js"
