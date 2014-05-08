@@ -41,27 +41,21 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      css_dev: {
+      options: {
+        livereload: 35729,
+      },
+      css: {
         files: ['resources/templates/style/**/*.scss'],
         tasks: ["css_dev"],
-        options: {
-          livereload: 35729,
-        },
       },
-      css_release: {
-        files: ['resources/templates/style/**/*.scss'],
-        tasks: ["css_release"],
-      },
-      html_dev: {
+      html: {
         files: ['resources/templates/index.html.whiskers'],
         tasks: ["generate_dev_html"],
-        options: {
-          livereload: 35729,
-        },
       },
-      html_release: {
-        files: ['resources/templates/index.html.whiskers'],
-        tasks: ["generate_release_html"],
+      js: {
+        files: ['resources/public/js/{{sanitized}}.js',
+                'resources/public/js/out/{{sanitized}}/**/*.js'],
+        tasks: [],
       },
     },
 
@@ -69,8 +63,7 @@ module.exports = function (grunt) {
       options: {
         logConcurrentOutput: true
       },
-      build_and_watch_dev: ['cljsbuild_dev', 'watch:css_dev', 'watch:html_dev'],
-      build_and_watch_release: ['cljsbuild_release', 'watch:css_release', 'watch:html_release'],
+      build_and_watch: ['cljsbuild_dev', 'watch'],
     },
 
     connect: {
@@ -137,11 +130,9 @@ module.exports = function (grunt) {
   grunt.registerTask('webserver', ['connect']);
   grunt.registerTask('css_dev', ['sass:dev']);
   grunt.registerTask('css_release', ['sass:release']);
-  grunt.registerTask('build_and_watch_dev', ['concurrent:build_and_watch_dev']);
-  grunt.registerTask('build_and_watch_release', ['concurrent:build_and_watch_release']);
-
+  grunt.registerTask('build_and_watch', ['concurrent:build_and_watch']);
 
   grunt.registerTask('release', ['generate_release_html', 'css_release', 'build_nw_app']);
 
-  grunt.registerTask('default', ['generate_dev_html', 'css_dev', 'webserver', 'build_and_watch_dev']);
+  grunt.registerTask('default', ['generate_dev_html', 'css_dev', 'webserver', 'build_and_watch']);
 };
