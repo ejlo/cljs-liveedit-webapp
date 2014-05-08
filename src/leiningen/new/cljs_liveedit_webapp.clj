@@ -8,36 +8,38 @@
   (let [render (renderer "cljs-liveedit-webapp")
         data   {:name name
                 :sanitized (name-to-path name)}
-        templ  #(str "resources/templates/" %)
-        r #(render % data)]
-    (main/info "Generating fresh cljs-webapp project:" name)
+        r      (fn [file & options]
+                 (apply vector file (render file data) options))
+        r2     (fn [out in & options]
+                 (apply vector out (render in data) options))]
+    (main/info "Generating fresh cljs-liveedit-webapp project:" name)
     (->files data
-             ["project.clj" (render "project.clj" data)]
-             ["README.md" (render "README.md" data)]
-             ["Gruntfile.js" (render "Gruntfile.js" data)]
-             ["bower.json" (render "bower.json" data)]
-             ["package.json" (render "package.json" data)]
+             (r "project.clj")
+             (r "README.md")
+             (r "Gruntfile.js")
+             (r "bower.json")
+             (r "package.json")
              ["externs/jquery.js" (render "externs/jquery.js")]
-             ["externs/app.js" (render "externs/app.js" data)]
-             [".gitignore" (render ".gitignore" data)]
-             [(templ "style/app.scss") (render (templ "style/app.scss") data)]
-             [(templ "style/_layout.scss") (render (templ "style/_layout.scss") data)]
-             [(templ "style/_font.scss") (render (templ "style/_font.scss") data)]
-             [(templ "style/_hello.scss") (render (templ "style/_hello.scss") data)]
-             [(templ "style/_reset.scss") (render (templ "style/_reset.scss") data)]
-             [(templ "index.html.whiskers") (render (templ "index.html.whiskers") data)]
-             [(templ "js/function_prototype_polyfill.js") (render (templ "js/function_prototype_polyfill.js") data)]
-             ["scripts/install_deps.sh" (render "scripts/install_deps.sh" data) :executable true]
-             ["scripts/run_tests.rb" (render "scripts/run_tests.rb" data) :executable true]
-             ["scripts/start_build.sh" (render "scripts/start_build.sh" data) :executable true]
-             ["scripts/generate_externs.sh" (render "scripts/generate_externs.sh" data) :executable true]
-             ["scripts/clojurescript.el" (render "scripts/clojurescript.el" data)]
-             ["src/{{sanitized}}/main.cljs" (render "src/main.cljs" data)]
-             ["src/{{sanitized}}/tools.cljs" (render "src/tools.cljs" data)]
-             ["src/dev/{{sanitized}}/repl.cljs" (render "src/dev/repl.cljs" data)]
-             ["src/dev/{{sanitized}}/debug_level.cljs" (render "src/dev/debug_level.cljs" data)]
-             ["src/release/{{sanitized}}/repl.cljs" (render "src/release/repl.cljs" data)]
-             ["src/release/{{sanitized}}/debug_level.cljs" (render "src/release/debug_level.cljs" data)]
-             ["test/{{sanitized}}/test/main.cljs" (render "test/main.cljs" data)]
-             ["test/{{sanitized}}/test/repl.cljs" (render "test/repl.cljs" data)]
-             ["test/{{sanitized}}/test/debug_level.cljs" (render "test/debug_level.cljs" data)])))
+             (r "externs/app.js")
+             (r ".gitignore")
+             (r "resources/templates/style/app.scss")
+             (r "resources/templates/style/_layout.scss")
+             (r "resources/templates/style/_font.scss")
+             (r "resources/templates/style/_hello.scss")
+             (r "resources/templates/style/_reset.scss")
+             (r "resources/templates/index.html.whiskers")
+             (r "resources/templates/js/function_prototype_polyfill.js")
+             (r "scripts/install_deps.sh" :executable true)
+             (r "scripts/run_tests.rb" :executable true)
+             (r "scripts/start_build.sh" :executable true)
+             (r "scripts/generate_externs.sh" :executable true)
+             (r "scripts/clojurescript.el")
+             (r2 "src/{{sanitized}}/main.cljs" "src/main.cljs")
+             (r2 "src/{{sanitized}}/tools.cljs" "src/tools.cljs")
+             (r2 "src/dev/{{sanitized}}/repl.cljs" "src/dev/repl.cljs")
+             (r2 "src/dev/{{sanitized}}/debug_level.cljs" "src/dev/debug_level.cljs")
+             (r2 "src/release/{{sanitized}}/repl.cljs" "src/release/repl.cljs")
+             (r2 "src/release/{{sanitized}}/debug_level.cljs" "src/release/debug_level.cljs")
+             (r2 "test/{{sanitized}}/test/main.cljs" "test/main.cljs")
+             (r2 "test/{{sanitized}}/test/repl.cljs" "test/repl.cljs")
+             (r2 "test/{{sanitized}}/test/debug_level.cljs" "test/debug_level.cljs"))))
