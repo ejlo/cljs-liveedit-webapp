@@ -1,8 +1,8 @@
 (ns {{name}}.main
-    (:require [reagent.core :as reagent]
-              [{{name}}.repl        :as repl]
-              [{{name}}.tools       :as tools]
-              [{{name}}.debug-level :as debug-level]))
+  (:require [reagent.core :as reagent]
+            [{{name}}.repl        :as repl]
+            [{{name}}.tools       :as tools]
+            [{{name}}.debug-level :as debug-level]))
 
 (def hello-world-text (reagent/atom "Hello world!"))
 

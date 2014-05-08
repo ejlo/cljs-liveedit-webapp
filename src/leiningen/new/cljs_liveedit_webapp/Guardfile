@@ -1,5 +1,0 @@
-guard 'livereload', port: '35730' do
-  watch(%r{public/(style/[^.].+\.css$)}) { |m| "/#{m[1]}" }
-  watch(%r{public/[^.].+\.html$}) { |m| "/#{m[1]}" }
-  watch(%r{public/js/[^.][^/]+\.js$}) { |m| "/#{m[1]}" }
-end

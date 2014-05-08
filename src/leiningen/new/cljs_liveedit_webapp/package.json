@@ -1,0 +1,26 @@
+{
+  "name": "cljs-liveedit-example",
+  "version": "0.0.1",
+  "description": "cljs-liveedit-example",
+  "main": "index.js",
+  "dependencies": {
+    "connect": "^2.14.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-consolidate": "^0.1.0",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-node-webkit-builder": "^0.1.20",
+    "grunt-sass": "^0.12.1",
+    "grunt-shell": "^0.6.4",
+    "load-grunt-tasks": "^0.4.0",
+    "whiskers": "^0.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "eclipse"
+}

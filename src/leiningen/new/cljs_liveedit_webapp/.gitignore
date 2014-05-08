@@ -5,6 +5,7 @@ pom.xml
 /classes
 /target
 /node_modules
+/bower_components
 .lein-deps-sum
 .lein-failures
 .lein-plugins
@@ -15,5 +16,3 @@ resources/public/js
 resources/public/style
 resources/public/*.html
 resources/public/test/js
-resources/components/
-Gemfile.lock

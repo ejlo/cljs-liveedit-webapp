@@ -7,15 +7,15 @@
   </head>
 
   <body>
-<% if( @build_type == "dev" ) %>
-    <script src="http://localhost:35730/livereload.js"></script>
-    <script src="js/lib/react.js"></script>
+  {if dev}
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="js/lib/react.min.js"></script>
     <script src="js/out/goog/base.js"></script>
-<% end %>
+  {/if}
     <script src="js/{{sanitized}}.js"></script>
-<% if( @build_type == "dev" ) %>
+  {if dev}
     <script>goog.require("{{sanitized}}.main");</script>
-<% end %>
-    <script>{{sanitized}}.main.init("<%= @build_type %>");</script>
+  {/if}
+    <script>{{sanitized}}.main.init({dev});</script>
   </body>
 </html>

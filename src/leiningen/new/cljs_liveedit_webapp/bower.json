@@ -1,0 +1,22 @@
+{
+  "name": "cljs-liveedit-test3",
+  "version": "0.0.1",
+  "dependencies" : {
+    "jquery" : "^2.1",
+    "react" : "^0.10"
+  },
+  "install" : {
+    "path" : {
+      "css": "resources/public/style/lib",
+      "js": "resources/public/js/lib"
+    },
+    "sources" : {
+      "jquery" : [
+        "bower_components/jquery/dist/jquery.min.js"
+      ],
+      "react" : [
+        "bower_components/react/react.min.js"
+      ]
+    }
+  }
+}
