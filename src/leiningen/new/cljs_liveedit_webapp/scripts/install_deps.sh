@@ -20,6 +20,13 @@ command -v phantomjs >/dev/null 2>&1 || {
     exit 1;
 }
 
+command -v grunt >/dev/null 2>&1 || {
+    echo "grunt-cli is required but it's not installed."
+    echo "Install with:"
+    echo "sudo npm install grunt-cli -g"
+    exit 1;
+}
+
 npm install
 bower-installer
 
