@@ -37,7 +37,7 @@ def main
     res=run_runner
     save($test_res_file, res)
 
-    if( /:fail (?<f>[0-9]+).*:error (?<e>[0-9]+)/m =~ res )
+    if( /(?<f>[0-9]+) failures, (?<e>[0-9]+) errors/m =~ res )
       fails = f.to_i + e.to_i
       if( fails == 0 )
         rm($test_msg_file)
