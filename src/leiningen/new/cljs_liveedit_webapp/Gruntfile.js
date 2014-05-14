@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 
     watch: {
       options: {
-        livereload: 35729,
+        livereload: false,
       },
       css: {
         files: ['resources/templates/style/**/*.scss'],
@@ -63,7 +63,12 @@ module.exports = function (grunt) {
       options: {
         logConcurrentOutput: true
       },
-      build_and_watch: ['cljsbuild_dev', 'watch'],
+      build_and_watch: [
+        'cljsbuild_test',
+        'figwheel',
+        'watch:css',
+        'watch:html',
+      ],
     },
 
     connect: {
@@ -83,8 +88,14 @@ module.exports = function (grunt) {
       cljsbuild_dev: {
         command: 'lein do cljsbuild clean, cljsbuild auto dev test'
       },
+      cljsbuild_test: {
+        command: 'lein do cljsbuild clean, cljsbuild auto test'
+      },
       cljsbuild_release: {
-        command: 'lein do cljsbuild clean, cljsbuild auto release'
+        command: 'lein with-profiles release do cljsbuild clean, cljsbuild auto release'
+      },
+      figwheel: {
+        command: 'lein figwheel main'
       },
       nwapp: {
         command: 'scripts/build_nw_app.sh'
@@ -126,7 +137,9 @@ module.exports = function (grunt) {
   grunt.registerTask('generate_release_html', ['consolidate:release']);
   grunt.registerTask('build_nw_app', ['shell:build_nw_app']);
   grunt.registerTask('cljsbuild_dev', ['shell:cljsbuild_dev']);
+  grunt.registerTask('cljsbuild_test', ['shell:cljsbuild_test']);
   grunt.registerTask('cljsbuild_release', ['shell:cljsbuild_release']);
+  grunt.registerTask('figwheel', ['shell:figwheel']);
   grunt.registerTask('webserver', ['connect']);
   grunt.registerTask('css_dev', ['sass:dev']);
   grunt.registerTask('css_release', ['sass:release']);

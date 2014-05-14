@@ -28,13 +28,20 @@ lein new cljs-liveedit-webapp myapp
 cd myapp
 scripts/install_deps.sh
 grunt
-firefox http://localhost:63770
+firefox http://localhost:3449/index.html
 ```
+
+### Emacs browser repl
+
+* Put the contents of scrips/clojurescript in your .emacs and evaluate it
+* Start the repl with ``M-x cider-jack-in``
+* Start the browser repl with ``(broswer-repl)``
+* Reload the broswer
 
 ## Features
 
 * automatically run tests
-* live reload of css and js files
+* live reload of css and js files using lein-figwheel
 * clojurescript brower-repl
 * sourcemaps
 

@@ -1,10 +1,13 @@
 (ns {{name}}.main
-  (:require [reagent.core :as reagent]
-            [{{name}}.repl        :as repl]
-            [{{name}}.tools       :as tools]
+  (:require [figwheel.client :as fw :include-macros true]
+            [reagent.core :as reagent]
+            [{{name}}.repl :as repl]
+            [{{name}}.tools :as tools]
             [{{name}}.debug-level :as debug-level]))
 
-(def hello-world-text (reagent/atom "Hello world!"))
+(enable-console-print!)
+
+(defonce hello-world-text (reagent/atom "Hello world!"))
 
 (def body (.-body js/document))
 
@@ -20,3 +23,8 @@
   (tools/log "(init) dev:" dev)
   (repl/connect)
   (hello-world))
+
+(fw/watch-and-reload
+ :jsload-callback (fn []
+                    ;; (stop-and-start-my app)
+                    ))
